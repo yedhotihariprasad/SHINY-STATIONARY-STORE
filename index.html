@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shiny Stationery Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Home</h1>
+        <nav>
+              <a href="index.html">Home</a>
+        <a href="cart.html">Cart</a>
+        <a href="checkout.html">Checkout</a>
+        <a href="payment.html">Payment</a>
+        </nav>
+    </header>
+    <section id="products" class="products-section">
+    <h2>Our Products</h2>
+    <div class="products-container">
+        <!-- Product 1: Art Kit -->
+        <div class="product-card">
+            <img src="download (1).jpg" alt="Art Kit" />
+            <h3>Colourful Art Kit</h3>
+            <p>Price: ₹200</p>
+            <button onclick="addToCart({name:'Colourful Art Kit', price:200, image:'download-1.jpg'})">Add to Cart</button>
+        </div>
+        <!-- Product 2: Cute Notebooks -->
+        <div class="product-card">
+            <img src="download (2).jpg" alt="Cute Notebooks" />
+            <h3>Cute Spiral Notebooks (Set)</h3>
+            <p>Price: ₹200</p>
+            <button onclick="addToCart({name:'Cute Spiral Notebooks', price:200, image:'download-2.jpg'})">Add to Cart</button>
+        </div>
+        <!-- Product 3: Rollerball Pens -->
+        <div class="product-card">
+            <img src="download.jpg" alt="Rollerball Pens" />
+            <h3>Rollerball Pens (4 pcs)</h3>
+            <p>Price: ₹200</p>
+            <button onclick="addToCart({name:'Rollerball Pens', price:200, image:'download.jpg'})">Add to Cart</button>
+        </div>
+    </div>
+</section>
+    <div class="products-container" id="products-container"></div>
+    <script>
+      fetch('http://localhost:4000/api/products')
+        .then(res => res.json())
+        .then(products => {
+          const c = document.getElementById('products-container');
+          products.forEach(product => {
+            c.innerHTML += `
+              <div class="product-card">
+                <img src="${product.image}" alt="${product.name}" />
+                <h3>${product.name}</h3>
+                <p>₹${product.price}</p>
+                <button onclick='addToCart(${JSON.stringify(product)})'>Add to Cart</button>
+              </div>`;
+          });
+        });
+    </script>
+</body>
+</html>

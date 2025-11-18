@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Payment</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="scripts.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Payment</h1>
+  </header>
+  <button onclick="payNow()">Pay ₹<span id='total'></span> with Razorpay</button>
+  <script>
+    // Calculate total amount
+    const cart = getCart();
+    document.getElementById('total').textContent =
+      cart.reduce((sum,p)=>sum+parseInt(p.price,10), 0);
+
+    function payNow() {
+      const options = {
+        "key": "YOUR_RAZORPAY_KEY_ID", // Replace with your Razorpay key
+        "amount": document.getElementById('total').textContent * 100, // in paise
+        "currency": "INR",
+        "name": "Shiny Stationery Shop",
+        "description": "Order Payment",
+        "handler": function (response){
+          // After payment, send order to backend (implement backend endpoint)
+          fetch('http://localhost:4000/api/orders', {
+            method: 'POST',
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify({
+              user: JSON.parse(localStorage.getItem('user')),
+              items: cart,
+              paymentId: response.razorpay_payment_id
+            })
+          }).then(r=>{
+              clearCart();
+              alert('Order placed! Thank you.');
+              window.location.href = 'index.html';
+            });
+        }
+      };
+      const rzp = new Razorpay(options);
+      rzp.open();
+    }
+  </script>
+</body>
+</html>

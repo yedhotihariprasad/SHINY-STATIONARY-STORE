@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Page Title</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Your Cart</h1>
+        <nav>
+            <a href="index.html">Home</a> | 
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+    <div id="cart-container"></div>
+<button onclick="window.location.href='checkout.html'">Place Order</button>
+    <script>
+      const cart = getCart();
+      const c = document.getElementById('cart-container');
+      if(cart.length) {
+        cart.forEach((product, i) => {
+          c.innerHTML += `<div>${product.name} - ₹${product.price}</div>`;
+        });
+      } else {
+        c.innerHTML = "<p>Your cart is empty.</p>";
+      }
+    </script>
+</body>
+</html>

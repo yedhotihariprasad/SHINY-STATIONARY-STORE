@@ -1,0 +1,201 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Poppins', Arial, sans-serif;
+    background: linear-gradient(120deg, #fbeee6, #f6d365 90%);
+    color: #222;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(90deg, #f72585, #7209b7, #4cc9f0);
+    color: white;
+    padding: 27px 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(114,9,183,0.07);
+}
+
+header h1 {
+    font-size: 2.3em;
+    margin: 0;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: #fbeee6;
+    margin: 0 19px;
+    text-decoration: none;
+    font-size: 1.18em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #b5179e;
+    text-decoration: underline;
+}
+
+/* Sections & Layout */
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 48px auto 36px auto;
+    max-width: 1050px;
+}
+
+.product-card {
+    background: linear-gradient(125deg, #cafffb 55%, #ffd6e0 100%);
+    border-radius: 18px 4px 18px 4px;
+    box-shadow: 0 4px 18px rgba(60, 18, 107, 0.11);
+    padding: 24px 18px 20px 18px;
+    width: 230px;
+    transition: transform 0.18s, box-shadow 0.18s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-card:hover {
+    transform: translateY(-7px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(60, 18, 107, 0.22);
+}
+
+.product-card img {
+    max-width: 78%;
+    border-radius: 11px;
+    height: 115px;
+    object-fit: cover;
+    margin-bottom: 13px;
+    box-shadow: 0 0 5px #f725852c;
+}
+
+.product-card h3 {
+    color: #7209b7;
+    font-size: 1.05em;
+    margin: 7px 0 7px 0;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.product-card p {
+    font-size: 1.04em;
+    color: #333;
+    margin-bottom: 11px;
+    text-align: center;
+}
+
+.product-card button {
+    background: linear-gradient(90deg, #f72585, #b5179e, #7209b7);
+    color: white;
+    border: none;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 7px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.19s;
+    box-shadow: 0 3px 7px #4cc9f07a;
+}
+
+.product-card button:hover {
+    background: #3a0ca3;
+}
+
+#cart-container, #order-review, #checkout-container {
+    max-width: 550px;
+    margin: 37px auto;
+    background: #fffdec;
+    border-radius: 20px;
+    box-shadow: 0 2px 15px #b5179e22;
+    padding: 32px 21px 27px 21px;
+    font-size: 1.07em;
+}
+
+#cart-container div, #order-review div {
+    padding: 7px 0;
+    border-bottom: 1px dashed #ffd6e0;
+    margin-bottom: 8px;
+}
+
+#cart-container div:last-child, #order-review div:last-child {
+    border-bottom: none;
+}
+
+/* Form Styles */
+form {
+    background: #fff;
+    padding: 35px 23px 22px 23px;
+    max-width: 390px;
+    border-radius: 15px;
+    margin: 38px auto 24px auto;
+    box-shadow: 0 2px 11px #4cc9f033;
+}
+
+form input, form button {
+    width: 100%;
+    font-size: 1.05em;
+    padding: 11px 10px;
+    border-radius: 6px;
+    margin-bottom: 13px;
+    border: 1px solid #e5d5ee;
+}
+
+form input:focus {
+    border: 1.5px solid #7209b7;
+    outline: none;
+}
+
+form button {
+    background: linear-gradient(90deg, #b5179e, #7209b7);
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 8px;
+    border: none;
+    transition: background 0.19s;
+}
+
+form button:hover {
+    background: #f72585;
+}
+
+/* Payment Button */
+button {
+    outline: none;
+}
+
+/* Utility */
+.center {
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    .products-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        margin: 27px 0 15px 0;
+    }
+    header h1 { font-size: 1.4em; }
+}
+
+footer {
+    background: #7209b7;
+    color: #fff;
+    text-align: center;
+    padding: 17px;
+    font-size: 1.07em;
+    margin-top: 33px;
+    letter-spacing: 1px;
+    border-radius: 0 0 14px 14px;
+}
